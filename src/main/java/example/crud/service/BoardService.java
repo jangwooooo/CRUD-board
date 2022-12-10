@@ -6,6 +6,9 @@ import example.crud.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -30,6 +33,10 @@ public class BoardService {
         board.setContent(boardDto.getContent());
 
         boardRepository.save(board);
+    }
+
+    public List showAllBoardList() {
+        return boardRepository.findAll();
     }
 
 }

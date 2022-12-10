@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class BoardController {
@@ -28,5 +30,11 @@ public class BoardController {
     public String boardEdit(@RequestBody BoardDto boardDto) {
         boardService.edit(boardDto);
         return "test";
+    }
+
+    @ResponseBody
+    @GetMapping("/board/list")
+    public List boardList() {
+        return boardService.showAllBoardList();
     }
 }
