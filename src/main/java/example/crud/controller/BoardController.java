@@ -15,22 +15,25 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    @ResponseBody
     @PostMapping("/board/write")
     public String boardWrite(@RequestBody BoardDto boardDto) {
         boardService.write(boardDto);
-        return "test";
+        return "hello";
     }
 
+    @ResponseBody
     @DeleteMapping("/board/delete/{id}")
     public String boardDelete(@PathVariable Long id) {
         boardService.delete(id);
-        return "test";
+        return "hello";
     }
 
+    @ResponseBody
     @PutMapping("/board/edit")
     public String boardEdit(@RequestBody BoardDto boardDto) {
         boardService.edit(boardDto);
-        return "test";
+        return "hello";
     }
 
     @ResponseBody
