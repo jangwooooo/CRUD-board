@@ -1,5 +1,6 @@
 package example.crud.controller;
 
+import example.crud.entity.Board;
 import example.crud.entity.BoardDto;
 import example.crud.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -36,5 +37,11 @@ public class BoardController {
     @GetMapping("/board/list")
     public List boardList() {
         return boardService.showAllBoardList();
+    }
+
+    @ResponseBody
+    @PostMapping("/board/list/{id}")
+    public Board boardListID(@PathVariable Long id) {
+        return boardService.showBoardById(id);
     }
 }

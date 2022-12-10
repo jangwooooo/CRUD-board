@@ -39,4 +39,8 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
+    public Board showBoardById(Long id) {
+        return boardRepository.findById(id).get();
+    }
+
 }
