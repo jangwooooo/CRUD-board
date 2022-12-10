@@ -1,12 +1,12 @@
 package example.crud.service;
 
 import example.crud.entity.Board;
-import example.crud.entity.BoardDto;
+import example.crud.entity.RequestBoardDto;
+import example.crud.entity.ResponseBoardDto;
 import example.crud.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 @Service
@@ -15,7 +15,7 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public void write(BoardDto boardDto) {
+    public void write(RequestBoardDto boardDto) {
         Board board = Board.builder()
                         .title(boardDto.getTitle())
                         .content(boardDto.getContent())
@@ -27,7 +27,7 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
-    public void edit(BoardDto boardDto) {
+    public void edit(RequestBoardDto boardDto) {
         Board board = boardRepository.findById(boardDto.getId()).get();
         board.setTitle(boardDto.getTitle());
         board.setContent(boardDto.getContent());
@@ -39,8 +39,13 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
-    public Board showBoardById(Long id) {
-        return boardRepository.findById(id).get();
+    public ResponseBoardDto showBoardById(Long id) {
+        Board board = boardRepository.findById(id).get();
+        return ResponseBoardDto.builder()
+                .id(board.getId())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .build();
     }
 
 }

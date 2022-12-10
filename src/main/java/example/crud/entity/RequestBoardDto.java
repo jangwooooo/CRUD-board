@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardDto {
+public class RequestBoardDto {
 
     private Long id;
     private String title;
