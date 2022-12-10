@@ -23,4 +23,13 @@ public class BoardService {
     public void delete(Long id) {
         boardRepository.deleteById(id);
     }
+
+    public void edit(BoardDto boardDto) {
+        Board board = boardRepository.findById(boardDto.getId()).get();
+        board.setTitle(boardDto.getTitle());
+        board.setContent(boardDto.getContent());
+
+        boardRepository.save(board);
+    }
+
 }
