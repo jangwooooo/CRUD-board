@@ -1,11 +1,14 @@
 package example.crud.entity;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class BoardDto {
 
-    private Long id;
     private String title;
     private String content;
 }
