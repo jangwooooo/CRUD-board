@@ -22,23 +22,23 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/board/write")
-    public String boardWrite(@RequestBody RequestBoardDto boardDto) {
+    public ResponseEntity<Void> boardWrite(@RequestBody RequestBoardDto boardDto) {
         boardService.write(boardDto);
-        return null;
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @ResponseBody
     @DeleteMapping("/board/delete/{id}")
-    public String boardDelete(@PathVariable Long id) {
+    public ResponseEntity<Void> boardDelete(@PathVariable Long id) {
         boardService.delete(id);
-        return null;
+        return ResponseEntity.ok().build();
     }
 
     @ResponseBody
     @PutMapping("/board/edit")
-    public String boardEdit(@RequestBody RequestBoardDto boardDto) {
+    public ResponseEntity<Void> boardEdit(@RequestBody RequestBoardDto boardDto) {
         boardService.edit(boardDto);
-        return null;
+        return ResponseEntity.ok().build();
     }
 
     @ResponseBody
