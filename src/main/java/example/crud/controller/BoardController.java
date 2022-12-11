@@ -1,8 +1,7 @@
 package example.crud.controller;
 
-import example.crud.entity.Board;
-import example.crud.entity.RequestBoardDto;
-import example.crud.entity.ResponseBoardDto;
+import example.crud.dto.RequestBoardDto;
+import example.crud.dto.ResponseBoardDto;
 import example.crud.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -44,7 +43,7 @@ public class BoardController {
 
     @ResponseBody
     @GetMapping("/board/list")
-    public List boardList() {
+    public List<ResponseBoardDto> boardList() {
         return boardService.showAllBoardList();
     }
 

@@ -1,13 +1,17 @@
 package example.crud.service;
 
 import example.crud.entity.Board;
-import example.crud.entity.RequestBoardDto;
-import example.crud.entity.ResponseBoardDto;
+import example.crud.dto.RequestBoardDto;
+import example.crud.dto.ResponseBoardDto;
 import example.crud.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
@@ -35,8 +39,10 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    public List showAllBoardList() {
-        return boardRepository.findAll();
+    public List<ResponseBoardDto> showAllBoardList() {
+        return boardRepository.findAll().stream()
+                .map(ResponseBoardDto::new)
+                .collect(Collectors.toList());
     }
 
     public ResponseBoardDto showBoardById(Long id) {

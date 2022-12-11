@@ -1,15 +1,13 @@
-package example.crud.entity;
+package example.crud.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseBoardDto {
+public class RequestBoardDto {
 
     private Long id;
     private String title;
