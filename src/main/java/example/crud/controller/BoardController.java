@@ -50,8 +50,7 @@ public class BoardController {
     @ResponseBody
     @PostMapping("/board/list/{id}")
     public ResponseEntity<ResponseBoardDto> boardListID(@PathVariable Long id) {
-        HttpHeaders headers= new HttpHeaders();
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-        return new ResponseEntity<>(boardService.showBoardById(id),headers, HttpStatus.OK);
+        ResponseBoardDto board = boardService.showBoardById(id);
+        return ResponseEntity.ok().body(board);
     }
 }
