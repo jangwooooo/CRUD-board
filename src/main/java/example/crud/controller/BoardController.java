@@ -4,14 +4,12 @@ import example.crud.dto.RequestBoardDto;
 import example.crud.dto.ResponseBoardDto;
 import example.crud.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.charset.Charset;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -22,7 +20,7 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/board/write")
-    public ResponseEntity<Void> boardWrite(@RequestBody RequestBoardDto boardDto) {
+    public ResponseEntity<Void> boardWrite(@RequestBody @Valid RequestBoardDto boardDto) {
         boardService.write(boardDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -36,7 +34,7 @@ public class BoardController {
 
     @ResponseBody
     @PutMapping("/board/edit")
-    public ResponseEntity<Void> boardEdit(@RequestBody RequestBoardDto boardDto) {
+    public ResponseEntity<Void> boardEdit(@RequestBody @Valid RequestBoardDto boardDto) {
         boardService.edit(boardDto);
         return ResponseEntity.ok().build();
     }

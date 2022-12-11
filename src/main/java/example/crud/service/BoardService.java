@@ -7,11 +7,8 @@ import example.crud.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +28,7 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
-    public void edit(RequestBoardDto boardDto) {
+    public void edit( RequestBoardDto boardDto) {
         Board board = boardRepository.findById(boardDto.getId()).get();
         board.setTitle(boardDto.getTitle());
         board.setContent(boardDto.getContent());
